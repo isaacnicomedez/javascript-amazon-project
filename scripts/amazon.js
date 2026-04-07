@@ -1,3 +1,5 @@
+
+// Save data
 const products = [
     {
         image: 'images/products/athletic-cotton-socks-6-pairs.jpg',
@@ -28,6 +30,8 @@ const products = [
     },
 ];
 
+
+// Generate HTML
 let productsHTML = '';
 
 products.forEach(product => {
@@ -51,7 +55,7 @@ products.forEach(product => {
           </div>
 
           <div class="product-price">
-            $${product.priceCents / 100}
+            $${(product.priceCents / 100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">
