@@ -1,3 +1,5 @@
+import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
 
 let showMessage = {};
 
@@ -119,6 +121,7 @@ function handleQuantitySelector(productId) {
 
   return Number(selectVal);
 }
+
 
 function renderProductAdded(productId) {
   clearTimeout(showMessage[productId]);
