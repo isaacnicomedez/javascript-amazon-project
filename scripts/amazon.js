@@ -5,7 +5,6 @@ function main() {
 }
 
 
-// Generate HTML
 function generateHTML() {
   let productsHTML = '';
 
@@ -66,12 +65,13 @@ function generateHTML() {
 }
 
 
-// Make it interactive
 function pushOrder() {
   document.querySelectorAll(".js-add-to-cart")
     .forEach(btn => {
       btn.addEventListener('click', () => {
           const productId = btn.dataset.productId;
+
+          const quantity = handleQuantitySelector(productId);
 
           // Push product or increment quantity
           let matchingItem;
@@ -83,12 +83,12 @@ function pushOrder() {
           });
 
           if (matchingItem) {
-              matchingItem.quantity += 1;
+              matchingItem.quantity += quantity;
           } else {
               cart.push(
                   {
                       productId: productId,
-                      quantity: 1
+                      quantity: quantity
                   }
               );
           }
@@ -107,6 +107,13 @@ function calculateCartQuantity() {
   });
 
   document.querySelector(".js-cart-quantity").textContent = cartQuantity;
+}
+
+
+function handleQuantitySelector(productId) {
+  const selectVal = document.querySelector(`.js-quantity-selector-${productId}`).value;
+
+  return Number(selectVal);
 }
 
 
