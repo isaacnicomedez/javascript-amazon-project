@@ -17,7 +17,7 @@ function renderHTML () {
         });
 
         cartContainer += `
-            <div class="cart-item-container">
+            <div class="cart-item-container js-cart-item-container-${productId}">
                 <div class="delivery-date">
                     Delivery date: Tuesday, June 21
                 </div>
@@ -97,13 +97,14 @@ function renderHTML () {
     document.querySelector(".js-order-summary").innerHTML = cartContainer;
 }
 
+renderHTML();
+
 document.querySelectorAll(".js-delete-link").forEach(link => {
     link.addEventListener("click", () => {
         const pId = link.dataset.productId;
         deleteProduct(pId);
-        console.log(pId);
-        renderHTML();
+        
+        const container = document.querySelector(`.js-cart-item-container-${pId}`);
+        container.remove();
     });
 });
-
-renderHTML();

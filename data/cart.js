@@ -12,5 +12,4 @@ export let cart = [
 export function deleteProduct(productId) {
     const newCart = cart.filter(product => product.productId !== productId)
     cart = newCart;
-    console.log(newCart);
 }
