@@ -39,7 +39,7 @@ cart.forEach(item => {
                     <span class="update-quantity-link link-primary">
                     Update
                     </span>
-                    <span class="delete-quantity-link link-primary">
+                    <span class="delete-quantity-link link-primary js-delete-link">
                     Delete
                     </span>
                 </div>
@@ -52,7 +52,7 @@ cart.forEach(item => {
                 <div class="delivery-option">
                     <input type="radio" checked
                     class="delivery-option-input"
-                    name="${item.productId}">
+                    name="${productId}">
                     <div>
                     <div class="delivery-option-date">
                         Tuesday, June 21
@@ -65,7 +65,7 @@ cart.forEach(item => {
                 <div class="delivery-option">
                     <input type="radio"
                     class="delivery-option-input"
-                    name="${item.productId}">
+                    name="${productId}">
                     <div>
                     <div class="delivery-option-date">
                         Wednesday, June 15
@@ -78,7 +78,7 @@ cart.forEach(item => {
                 <div class="delivery-option">
                     <input type="radio"
                     class="delivery-option-input"
-                    name="${item.productId}">
+                    name="${productId}">
                     <div>
                     <div class="delivery-option-date">
                         Monday, June 13
@@ -93,5 +93,12 @@ cart.forEach(item => {
         </div>
     `
     document.querySelector(".js-order-summary").innerHTML = cartContainer;
+
+    document.querySelectorAll(".js-delete-link")
+        .forEach(link => {
+            link.addEventListener("click", () => {
+                console.log("delete");
+            });
+        });
 
 });
